@@ -21,9 +21,10 @@ defmodule Asn1Compiler.Case do
   setup do
     on_exit(fn ->
       Mix.env(:dev)
+      Mix.target(:host)
       Mix.Task.clear()
       Mix.Shell.Process.flush()
-      Mix.ProjectStack.clear_cache()
+      Mix.State.clear_cache()
       Mix.ProjectStack.clear_stack()
       delete_tmp_paths()
     end)
